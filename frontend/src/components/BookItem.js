@@ -24,7 +24,6 @@ export default class BookItem extends Component {
     );
 
     Promise.all([getImageUrl, getAuthor]).then(res => {
-      console.log(res);
       this.setState({
         imageUrl: res[0].data.media_details.sizes.full.source_url,
         author: res[1].data.name,
@@ -34,8 +33,7 @@ export default class BookItem extends Component {
   }
 
   render() {
-    console.log(this.state);
-    const { title, excerpt } = this.props.book;
+    const { id, title, excerpt } = this.props.book;
     const { author, imageUrl, isLoaded } = this.state;
 
     if (isLoaded) {
@@ -47,6 +45,8 @@ export default class BookItem extends Component {
           </small>
           <img style={{ width: "50%" }} src={imageUrl} alt={title.rendered} />
           <div dangerouslySetInnerHTML={{ __html: excerpt.rendered }} />
+          <Link to={`/book/${id}`}>Read Review</Link>
+          <hr />
         </div>
       );
     }
