@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import BookItem from "./BookItem";
 
 export class Books extends Component {
   state = {
@@ -26,7 +27,7 @@ export class Books extends Component {
       return (
         <div>
           {books.map(book => {
-            return <h4>{book.title.rendered}</h4>;
+            return <BookItem key={book.id} book={book} />;
           })}
         </div>
       );
