@@ -20,8 +20,18 @@ export class Books extends Component {
   }
 
   render() {
-    console.log(this.state);
-    return <div />;
+    const { books, isLoaded } = this.state;
+
+    if (isLoaded) {
+      return (
+        <div>
+          {books.map(book => {
+            return <h4>{book.title.rendered}</h4>;
+          })}
+        </div>
+      );
+    }
+    return <h3>Loading...</h3>;
   }
 }
 
