@@ -17,7 +17,7 @@ export default class BookItem extends Component {
   componentDidMount() {
     const { featured_media, author } = this.props.book;
     const getImageUrl = axios.get(
-      `http://localhost:8000/wp-json/wp/v2/media/${featured_media}`
+      `{featured_media}`
     );
     const getAuthor = axios.get(
       `http://localhost:8000/wp-json/wp/v2/users/${author}`
